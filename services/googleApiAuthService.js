@@ -9,8 +9,8 @@ const SCOPES = ['https://www.googleapis.com/auth/gmail.readonly','https://www.go
 // The file token.json stores the user's access and refresh tokens, and is
 // created automatically when the authorization flow completes for the first
 // time.
-const TOKEN_PATH = path.join(process.cwd(), 'token.json');
-const CREDENTIALS_PATH = path.join(process.cwd(), 'credentials.json');
+const TOKEN_PATH = path.join(process.cwd(), './credentials/token.json');
+const CREDENTIALS_PATH = path.join(process.cwd(), './credentials/credentials.json');
 
 /**
  * Reads previously authorized credentials from the save file.
@@ -98,18 +98,12 @@ async function listMessages(auth) {
     const message = await gmail.users.messages.get({
         userId: 'me',
         id: latestMessageId,
-       // format: 'full'
       });
 
-    const body = JSON.stringify(message.data.payload.parts[0].body.data);
+    const body = JSON.stringify(message.data.payload.body.data);
     console.log(body);
-    let data, buff, text;
-            data = body;
-            buff = new Buffer.from(data, "base64");
-            mailBody = buff.toString();
-            // display the result
-            console.log(mailBody);
-    //console.log(body);
+    let mailBody = new Buffer.from(body, "base64").toString();
+    console.log(mailBody);
    }
 
 
@@ -131,4 +125,4 @@ console.log(res.data);
 
 
 
-authorize().then(sendEmail).catch(console.error);
+authorize().then(listMessages).catch(console.error);
