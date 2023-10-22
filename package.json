@@ -1,0 +1,23 @@
+{
+  "name": "api-test-nodejs",
+  "version": "1.0.0",
+  "description": "This project demonstrates api tests with nodejs libraries",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "krishnendu",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/local-auth": "^3.0.0",
+    "axios": "^1.5.1",
+    "chai": "^4.3.10",
+    "googleapis": "^128.0.0",
+    "mocha": "^10.2.0",
+    "mochawesome": "^7.1.3"
+  }
+}
